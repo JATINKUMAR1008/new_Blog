@@ -5,9 +5,9 @@ const Heropage = () => {
   return (
     <div className='h-[100vh] md:h-[90vh] px-0 md:px-10 md:pb-3 '>
         <div className='relative w-full h-full'>
-            <img src={image.src} className='w-full h-full object-cover sm:rounded-2xl'></img>
+            <img src={image.src} className='w-full h-full object-cover md:rounded-2xl'></img>
         </div>
-        <div className='absolute bottom-0 px-5 md:px-10 py-10 sm:py-20 py-2  text-white flex gap-5 items-center justify-between '>
+        <div className='absolute bottom-0 px-5 md:px-10 py-10 sm:py-20   text-white flex gap-5 items-center justify-between '>
             <div className='py-0 '>
 
             

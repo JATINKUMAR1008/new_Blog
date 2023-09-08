@@ -9,7 +9,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    
+    extend: {
+      backgroundColor:{
+        "popBg": 'rgba(0, 0, 0, 0.5)',
+        "sideBg": `rgba(0,0,0,0.9)`
+      }
+    },
   },
   plugins: [],
 }
