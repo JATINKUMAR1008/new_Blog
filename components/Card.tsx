@@ -3,7 +3,7 @@ import image from '../assets/de.jpg'
 import av from '../assets/bg.jpg'
 const Card = () => {
   return (
-    <div className='flex flex-col justify-center max-w-sm md:max-w-sm py-2 gap-2'>
+    <div className='flex flex-col justify-center max-w-md md:max-w-sm py-2 gap-2'>
         <div className='w-full h-full mb-1'>
             <img src={image.src} className='w-full object-cover rounded-md cursor-pointer'/>
         </div>

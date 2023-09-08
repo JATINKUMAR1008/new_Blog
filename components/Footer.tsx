@@ -14,7 +14,7 @@ const Footer = () => {
               Get started
             </button>
           </span>
-          <div className='grid gap-10 w-full mt-5 justify-between px-10 py-10 grid-cols-2 sm:grid-cols-3 md:grid-cols-6'>
+          <div className='grid w-full mt-5 justify-center place-content-center px-10 py-10 grid-cols-2 sm:grid-cols-3 md:grid-cols-6 text-center gap-10'>
               <ul className='font-bold'>
                 <span className='text-sm'>Product</span>
                 <li className='text-md mt-3'>Overview</li> 

@@ -1,25 +1,23 @@
 "use client"
 import './globals.css'
-import type { Metadata } from 'next'
 import Navbar from '../../components/Navbar'
-import SideNav from '../../components/SideNav'
-import React, { useState } from 'react'
 import { ReduxProvider } from '../../redux/provider'
-
+import Test from '../../components/test'
+import React from 'react'
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const [ open,isOpen] = useState(false)
-const handleClick= ()=>{
-  console.log(open)
-  isOpen(!open)
-}
+  const [open,Isopen] = React.useState(false)
+  const click = ()=>{
+    Isopen(!open)
+  }
+
   return (
     <html lang="en">
-      <body><ReduxProvider><Navbar handleClick={handleClick}/><SideNav handleClick={handleClick} Open={open}/>{children}</ReduxProvider></body>
+      <body><Navbar Mclick={click}/><Test click={click} Open={open}/><ReduxProvider>{children}</ReduxProvider></body>
     </html>
   )
 }
