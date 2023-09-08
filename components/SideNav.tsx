@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { HiMenuAlt4 } from 'react-icons/hi'
 import { RxCross2 } from 'react-icons/rx'
@@ -14,12 +14,19 @@ const SideNav = ({handleClick,Open}: any) => {
                 <li className='cursor-pointer'>Pricing</li>
                 <li className='cursor-pointer'>About us</li>
             </ul>
+            <div className='text-white w-full mt-6 text-2xl font-bold rounded-md outline outline-white flex items-center justify-center px-2 py-3 outline-1 cursor-pointer' onClick={}>
+              login
+            </div>
+            <div className='text-white w-full mt-6 text-2xl font-bold outline rounded-md outline-white flex items-center justify-center px-2 py-3 outline-1 cursor-pointer'>
+              Signup
+            </div>
         </nav>
+      
         <div className='absolute text-white top-20 right-10 cursor-pointer'>
             <RxCross2 size={40} onClick={handleClick}/>
         </div>
     </div>
-  )
+  );
 }
 
 export default SideNav

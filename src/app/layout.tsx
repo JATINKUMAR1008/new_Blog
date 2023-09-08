@@ -5,10 +5,7 @@ import Navbar from '../../components/Navbar'
 import SideNav from '../../components/SideNav'
 import React, { useState } from 'react'
 import { ReduxProvider } from '../../redux/provider'
-export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'Created By Jatin Kumar 👦',
-}
+
 
 export default function RootLayout({
   children,

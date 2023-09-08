@@ -1,34 +1,39 @@
 
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useRef} from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { HiMenuAlt4 } from 'react-icons/hi'
 import LoginModal from './LoginModal'
 const Navbar = ({handleClick}: any) => {
-    const [show,setShow] = useState(false)
-    var lastScrollTop = 0
-
-    window.addEventListener('scroll',()=>{
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop
-        let nav = document.getElementById('nav')
-        if(scrollTop === 0 ){
-            setShow(true)
-        }else{
-            setShow(false)
-        }
-        if(scrollTop>lastScrollTop){
-            nav.style.top="-80px";
-        }else{
-            nav.style.top="0px";
-        }
-        lastScrollTop = scrollTop
-    })
+    const [show,setShow] = useState(true)
+    const [lastScrollTop, setLastScrollTop] = useState(0);
     const [open,IsOpen] = useState(false)
     const click = () =>{
         IsOpen(!open)
     }
+    const nav = useRef(null)
+    useEffect(() => {
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY;
+  
+        if (scrollTop === 0) {
+          setShow(true);
+        } else {
+          setShow(false);
+        }
+  
+        if (scrollTop > lastScrollTop) {
+          nav.current.style.top = "-80px";
+        } else {
+          nav.current.style.top = "0px";
+        }
+  
+        setLastScrollTop(scrollTop);
+      });
+    }, [lastScrollTop]);
+    
     
   return (
-    <div id="nav" className={show?'w-full fixed bg-transparent text-black md:bg-transparent md:relative z-10 flex flex-row justify-between items-center py-6 sm:px-10 px-5 ease-in-out duration-150 ':'w-full fixed bg-black md:bg-transparent md:relative z-10 flex flex-row justify-between items-center py-6 sm:px-10 px-5 ease-in-out duration-150 '}>
+    <div id="nav" ref={nav} className={show?'w-full fixed bg-transparent text-black md:bg-transparent md:relative z-10 flex flex-row justify-between items-center py-6 sm:px-10 px-5 ease-in-out duration-150 ':'w-full fixed bg-black md:bg-transparent md:relative z-10 flex flex-row justify-between items-center py-6 sm:px-10 px-5 ease-in-out duration-150 '}>
         <div>
             <h2 className='font-bold text-xl md:text-2xl text-white md:text-black cursor-pointer'>Blogs UI.</h2>
         </div>
