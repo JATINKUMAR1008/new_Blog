@@ -47,7 +47,7 @@ const RM = ({handleClick,open}:any) => {
     const [np,setNp] = useState(false)
   return (
     <div className={open?'fixed inset-0 bg-popBg px-2 py-5 w-full h-full flex items-center justify-center ease-in-out duration-150':"absolute ease-in-out duration-150 top-[-1000%] inset-0 bg-popBg px-2 py-5 w-full h-full flex items-center justify-center"}>
-        <div className='relative bg-white w-[500px] px-5 py-10 flex flex-col items-center rounded-md'>
+        <div className='relative bg-white w-[350px] sm:w-[500px] px-5 py-10 flex flex-col items-center rounded-md'>
             <h1 className='text-2xl font-bold mt-3 text-center'>Create Your Account Today</h1>
             <p className='text-gray-400 capitalize text-sm mt-1 mb-10'>we're a team that guides each other</p>
             {!np&&(<><div className='w-full outline cursor-pointer outline-1 mt-2 outline-gray-200 flex items-center justify-center px-2 py-3'>

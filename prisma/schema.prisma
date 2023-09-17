@@ -17,3 +17,13 @@ model User{
   email String
   password String
 }
+
+model Blog{
+  id String @id @default(cuid())
+  title   String
+  description String
+  content String
+  img String
+  author String
+  date String
+}

@@ -13,7 +13,8 @@ module.exports = {
     extend: {
       backgroundColor:{
         "popBg": 'rgba(0, 0, 0, 0.5)',
-        "sideBg": `rgba(0,0,0,0.9)`
+        "sideBg": `rgba(0,0,0,0.9)`,
+        "sideBg1": 'rgba(0,0,0,0.5)'
       }
     },
   },

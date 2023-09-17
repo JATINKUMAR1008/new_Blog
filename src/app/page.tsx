@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Heropage/>
       <RecentPage/>
-      <Footer/>
+      
       {/*<LoginModal/>*/}
     </>
   )

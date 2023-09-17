@@ -5,12 +5,16 @@ import { HiMenuAlt4 } from 'react-icons/hi'
 import LoginModal from './LoginModal'
 import { useDispatch } from 'react-redux'
 import { Open } from '../redux/featues/nav-slice'
-import { useAppSelector } from '../redux/store'
 import Test from './test'
 import { useRouter } from 'next/router'
 import SM from './signin_modal'
 import RM from './register_modal'
-const Navbar = ({Mclick}:any) => {
+import { AppDispatch, useAppSelecto } from '../redux/store'
+import Link from 'next/link'
+const Navbar = () => {
+    const dispatch = useDispatch<AppDispatch>()
+    const auth = useAppSelecto((state)=>state.authReducer.value.isAuth)
+    const user_name = useAppSelecto((state)=>state.authReducer.value.name)
     const [show,setShow] = useState(false)
     const [lastScrollTop, setLastScrollTop] = useState(0);
     const [open,IsOpen] = useState(false)
@@ -45,30 +49,35 @@ const Navbar = ({Mclick}:any) => {
     
     
   return (
-    <div id="nav" ref={nav} className={show?'w-full fixed bg-transparent text-black md:bg-transparent md:relative z-10 flex flex-row justify-between items-center py-6 sm:px-10 px-5 ease-in-out duration-150 ':'w-full fixed bg-black md:bg-transparent md:relative z-10 flex flex-row justify-between items-center py-6 sm:px-10 px-5 ease-in-out duration-150 '}>
+    <div id="nav" ref={nav} className={show?'w-full fixed bg-transparent text-black md:bg-transparent md:relative z-10 flex flex-row justify-between items-center py-6 sm:px-10 px-5 ease-in-out duration-150 ':'w-full fixed bg-black md:bg-transparent md:relative text-white z-10 flex flex-row justify-between items-center py-6 sm:px-10 px-5 ease-in-out duration-150 '}>
         <div>
-            <a href="/"><h2 className='font-bold text-xl md:text-2xl text-white md:text-black cursor-pointer'>Blogs UI.</h2></a>
+            <Link href="/"><h2 className='font-bold text-xl md:text-2xl cursor-pointer'>Blogs UI.</h2></Link>
         </div>
         <div className='hidden md:flex list-none'>
             <ul className='flex gap-[2rem] font-semibold text-md'>
-                <li>Home</li>
-               
-                <li className='flex items-center gap-3 flex-row-reverse'><IoIosArrowDown size={15} className="font-semibold"/><span>Products</span></li>
-                <a href="/blogs"><li className='flex items-center gap-3 flex-row-reverse'><IoIosArrowDown size={15} className="font-semibold"/><span>Blog</span></li></a>
-                <li>Pricing</li>
-                <li>About us</li>
+                <Link href='/'><li>Home</li></Link>
+                <Link href="/blogs"><li className='flex items-center gap-3 flex-row-reverse'><span>Blog</span></li></Link>
+                <Link href="/pricing"><li>Pricing</li></Link>
+                <Link href="/about"><li>About us</li></Link>
             </ul>
         </div>
-        <div className='hidden md:flex gap-5 items-center'>
+        {auth?(
+          <div className='hidden md:flex gap-5 items-center'>
+            <button className='px-4 py-2 text-white bg-gray-900 font-semibold text-sm rounded-lg'>
+              {`Hi, `+`${user_name}`}
+            </button>
+            </div>
+        ):(<div className='hidden md:flex gap-5 items-center'>
             <span className='font-semibold text-md cursor-pointer' onClick={click}>
                 Log in
             </span>
             <button className='py-3 px-5 text-sm bg-gray-900 text-white font-semibold rounded-lg' onClick={handleClick}>
                 Sign Up
             </button>
-        </div>
-        <div className='text-white cursor-pointer md:text-black md:hidden'>
-            <HiMenuAlt4 size={30} onClick={Mclick}/>
+        </div>)}
+        
+        <div className='cursor-pointer md:hidden'>
+            <HiMenuAlt4 size={30} onClick={()=>dispatch(Open())}/>
         </div>
         <SM handleClick={click} open={open}/>
         <RM handleClick={handleClick} open={rm}/>

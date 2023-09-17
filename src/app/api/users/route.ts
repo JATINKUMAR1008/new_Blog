@@ -1,9 +1,19 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient,User } from "@prisma/client"
 import { NextApiRequest } from "next"
 import { NextResponse } from "next/server"
 
 export const GET = async(res: Response, req: Request) =>{
-    return NextResponse.json({message:"hello"})
+    const email = await req.json()
+    const data: User = await prisma.user.findFirst(
+        {
+            where:{
+                email: email
+            }
+        }
+    )
+    console.log(data)
+    return NextResponse.json(data)
+
 }
 const prisma = new PrismaClient()
 
